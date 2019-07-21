@@ -20,22 +20,23 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-}
-
-android.applicationVariants.all {
-    // Set this to false to disable Firebase Performance Monitoring at compile time
-    FirebasePerformance {
-        instrumentationEnabled true
+        debug {
+            FirebasePerformance {
+                // Set this flag to 'false' to disable @AddTrace annotation processing and
+                // automatic HTTP/S network request monitoring
+                // for a specific build variant at compile time.
+                instrumentationEnabled true
+            }
+        }
     }
 }
 
 dependencies {
     implementation project(":internal:lintchecks")
     implementation project(":internal:chooserx")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.40"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.41"
 
-    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-core:17.0.1'
     implementation 'com.google.firebase:firebase-perf:18.0.1'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
