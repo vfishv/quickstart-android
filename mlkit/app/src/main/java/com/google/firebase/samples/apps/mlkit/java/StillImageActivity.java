@@ -40,10 +40,10 @@ import com.google.android.gms.common.annotation.KeepName;
 import com.google.firebase.samples.apps.mlkit.R;
 import com.google.firebase.samples.apps.mlkit.common.GraphicOverlay;
 import com.google.firebase.samples.apps.mlkit.common.VisionImageProcessor;
-import com.google.firebase.samples.apps.mlkit.java.cloudimagelabeling.CloudImageLabelingProcessor;
-import com.google.firebase.samples.apps.mlkit.java.cloudlandmarkrecognition.CloudLandmarkRecognitionProcessor;
-import com.google.firebase.samples.apps.mlkit.java.cloudtextrecognition.CloudDocumentTextRecognitionProcessor;
-import com.google.firebase.samples.apps.mlkit.java.cloudtextrecognition.CloudTextRecognitionProcessor;
+//import com.google.firebase.samples.apps.mlkit.java.cloudimagelabeling.CloudImageLabelingProcessor;
+//import com.google.firebase.samples.apps.mlkit.java.cloudlandmarkrecognition.CloudLandmarkRecognitionProcessor;
+//import com.google.firebase.samples.apps.mlkit.java.cloudtextrecognition.CloudDocumentTextRecognitionProcessor;
+//import com.google.firebase.samples.apps.mlkit.java.cloudtextrecognition.CloudTextRecognitionProcessor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -361,6 +361,7 @@ public final class StillImageActivity extends AppCompatActivity {
   }
 
   private void createImageProcessor() {
+    /*
     switch (selectedMode) {
       case CLOUD_LABEL_DETECTION:
         imageProcessor = new CloudImageLabelingProcessor();
@@ -377,5 +378,6 @@ public final class StillImageActivity extends AppCompatActivity {
       default:
         throw new IllegalStateException("Unknown selectedMode: " + selectedMode);
     }
+    */
   }
 }
