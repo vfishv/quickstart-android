@@ -31,20 +31,20 @@ import com.google.android.gms.common.annotation.KeepName
 import com.google.firebase.ml.common.FirebaseMLException
 import com.google.firebase.samples.apps.mlkit.R
 import com.google.firebase.samples.apps.mlkit.common.CameraSource
-import com.google.firebase.samples.apps.mlkit.kotlin.barcodescanning.BarcodeScanningProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.custommodel.CustomImageClassifierProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.barcodescanning.BarcodeScanningProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.custommodel.CustomImageClassifierProcessor
 import com.google.firebase.samples.apps.mlkit.kotlin.facedetection.FaceContourDetectorProcessor
 import com.google.firebase.samples.apps.mlkit.kotlin.facedetection.FaceDetectionProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.imagelabeling.ImageLabelingProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.textrecognition.TextRecognitionProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.imagelabeling.ImageLabelingProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.textrecognition.TextRecognitionProcessor
 import kotlinx.android.synthetic.main.activity_live_preview.facingSwitch
 import kotlinx.android.synthetic.main.activity_live_preview.fireFaceOverlay
 import kotlinx.android.synthetic.main.activity_live_preview.firePreview
 import kotlinx.android.synthetic.main.activity_live_preview.spinner
 import java.io.IOException
-import com.google.firebase.samples.apps.mlkit.kotlin.objectdetection.ObjectDetectorProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.objectdetection.ObjectDetectorProcessor
 import com.google.firebase.ml.vision.objects.FirebaseVisionObjectDetectorOptions
-import com.google.firebase.samples.apps.mlkit.kotlin.automl.AutoMLImageLabelerProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.automl.AutoMLImageLabelerProcessor
 
 /** Demo app showing the various features of ML Kit for Firebase. This class is used to
  * set up continuous frame processing on frames from a camera source.  */
@@ -159,52 +159,12 @@ class LivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallb
 
         try {
             when (model) {
-                CLASSIFICATION_QUANT -> {
-                    Log.i(TAG, "Using Custom Image Classifier (quant) Processor")
-                    cameraSource?.setMachineLearningFrameProcessor(
-                        CustomImageClassifierProcessor(
-                            this,
-                            true
-                        )
-                    )
-                }
-                CLASSIFICATION_FLOAT -> {
-                    Log.i(TAG, "Using Custom Image Classifier (float) Processor")
-                    cameraSource?.setMachineLearningFrameProcessor(
-                        CustomImageClassifierProcessor(
-                            this,
-                            false
-                        )
-                    )
-                }
-                TEXT_DETECTION -> {
-                    Log.i(TAG, "Using Text Detector Processor")
-                    cameraSource?.setMachineLearningFrameProcessor(TextRecognitionProcessor())
-                }
+
                 FACE_DETECTION -> {
                     Log.i(TAG, "Using Face Detector Processor")
                     cameraSource?.setMachineLearningFrameProcessor(FaceDetectionProcessor(resources))
                 }
-                OBJECT_DETECTION -> {
-                    Log.i(TAG, "Using Object Detector Processor")
-                    val objectDetectorOptions = FirebaseVisionObjectDetectorOptions.Builder()
-                        .setDetectorMode(FirebaseVisionObjectDetectorOptions.STREAM_MODE)
-                        .enableClassification().build()
-                    cameraSource?.setMachineLearningFrameProcessor(
-                        ObjectDetectorProcessor(objectDetectorOptions)
-                    )
-                }
-                AUTOML_IMAGE_LABELING -> {
-                    cameraSource?.setMachineLearningFrameProcessor(AutoMLImageLabelerProcessor(this))
-                }
-                BARCODE_DETECTION -> {
-                    Log.i(TAG, "Using Barcode Detector Processor")
-                    cameraSource?.setMachineLearningFrameProcessor(BarcodeScanningProcessor())
-                }
-                IMAGE_LABEL_DETECTION -> {
-                    Log.i(TAG, "Using Image Label Detector Processor")
-                    cameraSource?.setMachineLearningFrameProcessor(ImageLabelingProcessor())
-                }
+
                 FACE_CONTOUR -> {
                     Log.i(TAG, "Using Face Contour Detector Processor")
                     cameraSource?.setMachineLearningFrameProcessor(FaceContourDetectorProcessor())

@@ -18,10 +18,10 @@ import android.widget.PopupMenu
 import com.google.android.gms.common.annotation.KeepName
 import com.google.firebase.samples.apps.mlkit.R
 import com.google.firebase.samples.apps.mlkit.common.VisionImageProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.cloudimagelabeling.CloudImageLabelingProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.cloudlandmarkrecognition.CloudLandmarkRecognitionProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.cloudtextrecognition.CloudDocumentTextRecognitionProcessor
-import com.google.firebase.samples.apps.mlkit.kotlin.cloudtextrecognition.CloudTextRecognitionProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.cloudimagelabeling.CloudImageLabelingProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.cloudlandmarkrecognition.CloudLandmarkRecognitionProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.cloudtextrecognition.CloudDocumentTextRecognitionProcessor
+//import com.google.firebase.samples.apps.mlkit.kotlin.cloudtextrecognition.CloudTextRecognitionProcessor
 import kotlinx.android.synthetic.main.activity_still_image.controlPanel
 import kotlinx.android.synthetic.main.activity_still_image.featureSelector
 import kotlinx.android.synthetic.main.activity_still_image.getImageButton
@@ -298,6 +298,7 @@ class StillImageActivity : AppCompatActivity() {
     }
 
     private fun createImageProcessor() {
+        /*
         imageProcessor = when (selectedMode) {
             CLOUD_LABEL_DETECTION -> CloudImageLabelingProcessor()
             CLOUD_LANDMARK_DETECTION -> CloudLandmarkRecognitionProcessor()
@@ -305,6 +306,7 @@ class StillImageActivity : AppCompatActivity() {
             CLOUD_DOCUMENT_TEXT_DETECTION -> CloudDocumentTextRecognitionProcessor()
             else -> throw IllegalStateException("Unknown selectedMode: $selectedMode")
         }
+        */
     }
 
     companion object {
