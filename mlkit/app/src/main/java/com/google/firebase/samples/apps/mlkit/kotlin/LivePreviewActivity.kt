@@ -87,14 +87,14 @@ class LivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallb
 
         val options = arrayListOf(
             FACE_CONTOUR,
-            FACE_DETECTION,
+            FACE_DETECTION/*,
             OBJECT_DETECTION,
             AUTOML_IMAGE_LABELING,
             TEXT_DETECTION,
             BARCODE_DETECTION,
             IMAGE_LABEL_DETECTION,
             CLASSIFICATION_QUANT,
-            CLASSIFICATION_FLOAT
+            CLASSIFICATION_FLOAT*/
         )
         // Creating adapter for spinner
         val dataAdapter = ArrayAdapter(this, R.layout.spinner_style, options)
