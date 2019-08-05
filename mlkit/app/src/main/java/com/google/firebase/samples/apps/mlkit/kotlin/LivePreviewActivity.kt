@@ -37,13 +37,11 @@ import com.google.firebase.samples.apps.mlkit.kotlin.facedetection.FaceContourDe
 import com.google.firebase.samples.apps.mlkit.kotlin.facedetection.FaceDetectionProcessor
 //import com.google.firebase.samples.apps.mlkit.kotlin.imagelabeling.ImageLabelingProcessor
 //import com.google.firebase.samples.apps.mlkit.kotlin.textrecognition.TextRecognitionProcessor
-import kotlinx.android.synthetic.main.activity_live_preview.facingSwitch
-import kotlinx.android.synthetic.main.activity_live_preview.fireFaceOverlay
-import kotlinx.android.synthetic.main.activity_live_preview.firePreview
-import kotlinx.android.synthetic.main.activity_live_preview.spinner
 import java.io.IOException
 //import com.google.firebase.samples.apps.mlkit.kotlin.objectdetection.ObjectDetectorProcessor
 import com.google.firebase.ml.vision.objects.FirebaseVisionObjectDetectorOptions
+import kotlinx.android.synthetic.main.activity_live_preview.*
+
 //import com.google.firebase.samples.apps.mlkit.kotlin.automl.AutoMLImageLabelerProcessor
 
 /** Demo app showing the various features of ML Kit for Firebase. This class is used to
@@ -83,6 +81,10 @@ class LivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallb
 
         if (fireFaceOverlay == null) {
             Log.d(TAG, "graphicOverlay is null")
+        }
+
+        capture.setOnClickListener {
+            cameraSource?.takePicture()
         }
 
         val options = arrayListOf(

@@ -24,17 +24,22 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresPermission;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.gms.common.images.Size;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.Thread.State;
 import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -246,6 +251,70 @@ public class CameraSource {
     // Release the reference to any image buffers, since these will no longer be in use.
     bytesToByteBuffer.clear();
   }
+
+
+  /**
+   * 将拍照保存下来
+   * @param data
+   */
+  public void savePhoto(byte[] data){
+    FileOutputStream fos = null;
+    String timeStamp =new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
+    //保存路径+图片名字
+    String imagePath = "/sdcard/" + timeStamp + ".png";
+    try{
+      fos = new FileOutputStream(imagePath);
+      fos.write(data);
+      //清空缓冲区数据
+      fos.flush();
+      //关闭
+      fos.close();
+    }catch (Exception e){
+      e.printStackTrace();
+    }finally {
+      if(activity!=null)
+      {
+        Toast.makeText(activity,"拍照成功!",Toast.LENGTH_SHORT).show();
+      }
+    }
+  }
+
+  public synchronized void takePicture() {
+    if (camera != null) {
+      camera.takePicture(/*new ShutterCallback()*/null, null, new Camera.PictureCallback() {
+        //拍照回调接口
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+          savePhoto(data);
+          //停止预览
+          camera.stopPreview();
+          //重启预览
+          camera.startPreview();
+        }
+      });
+    }
+  }
+
+  /* *//**
+   * 快门回调接口，如果不想拍照声音，直接将new ShutterCallback()修改为null即可
+   */
+  /*
+  private class ShutterCallback implements Camera.ShutterCallback {
+    @Override
+    public void onShutter() {
+      MediaPlayer mPlayer = new MediaPlayer();
+      mPlayer = MediaPlayer.create(getApplicationContext(), R.raw.shutter);
+      try {
+        mPlayer.prepare();
+      } catch (IllegalStateException e) {
+        e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      mPlayer.start();
+    }
+  }
+  */
 
   /** Changes the facing of the camera. */
   public synchronized void setFacing(int facing) {

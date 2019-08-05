@@ -2,6 +2,7 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fireTopLayout"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -33,7 +34,7 @@
       android:textSize="20sp"
       android:textStyle="bold" />
 
-  <FrameLayout
+  <RelativeLayout
       android:id="@+id/control"
       android:layout_width="match_parent"
       android:layout_height="60dp"
@@ -44,20 +45,32 @@
 
       <Spinner
           android:id="@+id/spinner"
+          android:visibility="gone"
+          android:layout_centerVertical="true"
+          android:layout_alignParentLeft="true"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center" />
 
-      <ToggleButton
-          android:id="@+id/facingSwitch"
+      <ImageView
+          android:id="@+id/capture"
+          app:srcCompat="@drawable/ic_photo_camera_black_24dp"
+          app:tint="@android:color/white"
+          android:layout_centerInParent="true"
           android:layout_width="48dp"
-          android:layout_height="48dp"
-          android:layout_gravity="center_vertical"
-          android:background="@layout/toggle_style"
-          android:textOff=""
-          android:textOn=""
-          android:checked="false" />
+          android:layout_height="48dp" />
 
-  </FrameLayout>
+  </RelativeLayout>
+
+    <ToggleButton
+        android:id="@+id/facingSwitch"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@layout/toggle_style"
+        android:textOff=""
+        android:textOn=""
+        android:checked="false" />
 
 </RelativeLayout>
