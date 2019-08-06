@@ -157,11 +157,14 @@ class LivePreviewActivity : AppCompatActivity(), OnRequestPermissionsResultCallb
         // If there's no existing cameraSource, create one.
         if (cameraSource == null) {
             cameraSource = CameraSource(this, fireFaceOverlay)
+            //if there is more than 1 camera
+            if (Camera.getNumberOfCameras() != 1) {
+                cameraSource?.setFacing(CameraSource.CAMERA_FACING_FRONT)
+            }
         }
 
         try {
             when (model) {
-
                 FACE_DETECTION -> {
                     Log.i(TAG, "Using Face Detector Processor")
                     cameraSource?.setMachineLearningFrameProcessor(FaceDetectionProcessor(resources))

@@ -7,16 +7,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#209E9EB3"
+    android:background="#88889C"
     android:keepScreenOn="true">
 
     <RelativeLayout
         android:id="@+id/control"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp"
         android:layout_alignParentBottom="true"
-        android:background="#204F4F6F">
+        >
 
         <Spinner
             android:id="@+id/spinner"
@@ -27,15 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
-        <ImageView
-            android:id="@+id/capture"
-            app:srcCompat="@drawable/ic_photo_camera_black_24dp"
-            app:tint="@android:color/white"
-            android:layout_centerInParent="true"
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
-
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/capture"
+        android:layout_marginBottom="36dp"
+        app:srcCompat="@drawable/ic_photo_camera_black_24dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_alignParentBottom="true"
+        app:tint="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
 
   <com.google.firebase.samples.apps.mlkit.common.CameraSourcePreview
       android:id="@+id/firePreview"
@@ -60,17 +62,16 @@
       android:textSize="20sp"
       android:textStyle="bold" />
 
-
-
     <ToggleButton
         android:id="@+id/facingSwitch"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_margin="6dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:background="@layout/toggle_style"
         android:textOff=""
         android:textOn=""
-        android:checked="false" />
+        android:checked="true" />
 
 </RelativeLayout>
