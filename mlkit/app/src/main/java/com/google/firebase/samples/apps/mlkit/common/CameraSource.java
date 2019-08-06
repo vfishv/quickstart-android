@@ -281,17 +281,21 @@ public class CameraSource {
 
   public synchronized void takePicture() {
     if (camera != null) {
-      camera.takePicture(/*new ShutterCallback()*/null, null, new Camera.PictureCallback() {
-        //拍照回调接口
-        @Override
-        public void onPictureTaken(byte[] data, Camera camera) {
-          savePhoto(data);
-          //停止预览
-          camera.stopPreview();
-          //重启预览
-          camera.startPreview();
-        }
-      });
+      try {
+        camera.takePicture(/*new ShutterCallback()*/null, null, new Camera.PictureCallback() {
+          //拍照回调接口
+          @Override
+          public void onPictureTaken(byte[] data, Camera camera) {
+            savePhoto(data);
+            //停止预览
+            camera.stopPreview();
+            //重启预览
+            camera.startPreview();
+          }
+        });
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
   }
 
