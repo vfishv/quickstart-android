@@ -10,24 +10,6 @@
     android:background="#88889C"
     android:keepScreenOn="true">
 
-    <RelativeLayout
-        android:id="@+id/control"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:visibility="gone"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-
-    </RelativeLayout>
-
     <ImageView
         android:id="@+id/capture"
         android:layout_marginBottom="36dp"
@@ -43,7 +25,6 @@
       android:id="@+id/firePreview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@id/control"
       android:layout_alignParentTop="true">
 
       <com.google.firebase.samples.apps.mlkit.common.GraphicOverlay
@@ -74,4 +55,12 @@
         android:textOn=""
         android:checked="true" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_marginBottom="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 </RelativeLayout>
